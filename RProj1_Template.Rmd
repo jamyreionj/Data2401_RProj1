@@ -2,7 +2,11 @@
 title: "Hello R"
 author: "JaMyreion Jackson"
 date: "Data 2401"
-output: html_document
+output: 
+  html_document: 
+    fig_width: 8
+    fig_height: 6
+    highlight: espresso
 ---
 
 ### Load packages
@@ -34,6 +38,8 @@ And next calculate the correlation between `x` and `y` in this dataset:
 dino_data %>%
   summarize(r = cor(x, y))
 ```
+
+### Exercise 3
 
 First let's plot the data in the star dataset:
 
@@ -73,4 +79,38 @@ circle_data %>%
 
 ### Exercise 5
 
-(Add code and narrative as needed. To add R chunks either type out the backticks, curly braces, and the letter `r` or use the Insert chunk button above, with the green +C.)
+First let's plot the data in the all datasets:
+
+```{r plot-dataset}
+ggplot(datasaurus_dozen, aes(x = x, y = y, color = dataset)) +
+ geom_point() +
+ facet_wrap(~ dataset, ncol = 3) + # facet the dataset variable, in 3 cols
+ theme(legend.position = "none")
+```
+
+And next calculate the correlation between `x` and `y` in this dataset:
+
+```{r cor-dataset}
+datasaurus_dozen %>%
+ group_by(dataset) %>%
+ summarize(r = cor(x, y)) %>%
+ print(13)
+ 
+## `summarise()` ungrouping output (override with `.groups` argument)
+## # A tibble: 13 x 2
+##    dataset           r
+##    <chr>         <dbl>
+## 1 away-0.0641
+## 2 bullseye-0.0686
+## 3 circle-0.0683
+## 4 dino
+## 5 dots
+## 6 h_lines-0.0645-0.0603-0.0617
+## 7 high_lines-0.0685
+## 8 slant_down-0.0690
+## 9 slant_up-0.0686
+## 10 star-0.0630
+## 11 v_lines-0.0694
+## 12 wide_lines-0.0666
+## 13 x_shape-0.0656
+```
