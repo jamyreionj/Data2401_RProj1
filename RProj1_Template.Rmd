@@ -5,8 +5,6 @@ date: "Data 2401"
 output: html_document
 ---
 
-MAKE SURE YOU READ AND FOLLOW **ALL** INSTRUCTIONS ON THE INSTRUCTION DOCUMENT. 
-
 ### Load packages
 
 ```{r load-packages, message=FALSE}
@@ -17,7 +15,7 @@ library(datasauRus)
 
 ### Exercise 1
 
-(Type your answer to Exercise 1 here. This exercise does not require any R code. **Remove notes like this in the final product that you turn in**)
+The datasaurus_dozen file has 1846 rows and 3 columns. This data frame includes the variables dataset, x, and y.
 
 ### Exercise 2
 
